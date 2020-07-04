@@ -1,18 +1,44 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import { BaseEntity } from "./BaseEntity";
+import { Entity, Column, Double, OneToMany } from "typeorm";
+import Clinic from "./Clinic";
+import Schedule from "./Schedule";
 
-@Entity()
-export class User {
+enum Category {
+  Psychologist = 1,
+  Owner = 2
+}
 
-    @PrimaryGeneratedColumn()
-    id: number;
+@Entity({ name: 'user' })
+export default class User extends BaseEntity {
 
-    @Column()
-    firstName: string;
+    @Column({ type: 'varchar', length: 100 })
+    name: string;
 
-    @Column()
-    lastName: string;
+    @Column({ type: "enum", enum: Category })
+    category: Category;
+    
+    @Column({ type: 'varchar', length: 20, nullable: true })
+    crp: string;
 
-    @Column()
-    age: number;
+    @Column({type: 'bigint'})
+    telefone: bigint;
+
+    @Column({ type: 'varchar', length: 100 })
+    state: string;
+
+    @Column({ type: 'varchar', length: 100 })
+    city: string;
+
+    @Column({ type: 'varchar', length: 100 })
+    email: string;
+
+    @Column({ type: 'varchar', length: 100})
+    password: string;
+
+    @OneToMany(type => Schedule, schedule => schedule.user)
+    schedules: Schedule[];
+
+    @OneToMany(type => Clinic, clinic => clinic.user)
+    clinics: Clinic[];
 
 }

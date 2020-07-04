@@ -1,26 +1,22 @@
-import {getRepository} from "typeorm";
-import {NextFunction, Request, Response} from "express";
-import {User} from "../entity/User";
+import { Request } from 'express';
+import { BaseController } from "./BaseController";
+import User from '../entity/User';
 
-export class UserController {
+export class UserController extends BaseController<User>{
 
-    private userRepository = getRepository(User);
-
-    async all(request: Request, response: Response, next: NextFunction) {
-        return this.userRepository.find();
+    constructor() {
+        super(User);
     }
 
-    async one(request: Request, response: Response, next: NextFunction) {
-        return this.userRepository.findOne(request.params.id);
-    }
-
-    async save(request: Request, response: Response, next: NextFunction) {
-        return this.userRepository.save(request.body);
-    }
-
-    async remove(request: Request, response: Response, next: NextFunction) {
-        let userToRemove = await this.userRepository.findOne(request.params.id);
-        await this.userRepository.remove(userToRemove);
-    }
-
+    async save(request: Request) {
+        let _user = <User>request.body;
+        super.isRequired(_user.name, 'Informe seu nome!');
+        super.isRequired(_user.category, 'Informe o que você é!');
+        super.isRequired(_user.email, 'Informe seu e-mail!');
+        super.isRequired(_user.password, 'Informe sua senha!');
+        super.isRequired(_user.telefone, 'Informe seu telefone!');
+        super.isRequired(_user.state, 'Informe seu estado!');
+        super.isRequired(_user.city, 'Informe sua cidade!');
+        return super.save(_user);
+    } 
 }
