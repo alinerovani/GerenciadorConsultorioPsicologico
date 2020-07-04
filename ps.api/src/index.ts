@@ -5,7 +5,6 @@ import * as bodyParser from "body-parser";
 import {Request, Response} from "express";
 import {Routes} from "./routes";
 import config from "./include/config";
-import { create } from "domain";
 
 // create express app
 const app = express();
