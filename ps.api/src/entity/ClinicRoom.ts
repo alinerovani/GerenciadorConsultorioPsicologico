@@ -24,6 +24,9 @@ export default class ClinicRoom extends BaseEntity {
     @Column({ type: 'decimal', precision: 5, scale: 2,})
     rental_price: Double;
 
+    @Column()
+    clinicUid: string;
+
     @ManyToOne(type => Clinic, clinic => clinic.rooms)
     clinic: Clinic;
 

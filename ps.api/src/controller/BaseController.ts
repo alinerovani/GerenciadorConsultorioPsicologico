@@ -31,7 +31,12 @@ export abstract class BaseController<GENERIC_CLASS> extends BaseValidation {
             if (_modelRegister) Object.assign(_modelRegister, model);
         }
         if (this.valid())
-            return this._repository.save(model);
+            return this._repository.save(model).catch(error => {
+                return {
+                    status: 400,
+                    error: error.sqlMessage
+                }
+            });
         else
             return {
                 status: 400,
@@ -45,7 +50,16 @@ export abstract class BaseController<GENERIC_CLASS> extends BaseValidation {
         console.log(request.params.id);
         _modelRegister = await this._repository.findOne(request.params.id);
         if (_modelRegister) _modelRegister.isActive = false;
-        return await this._repository.save(_modelRegister);
+        return await this._repository.save(_modelRegister).catch(error => {
+            return {
+                status: 400,
+                error: error.sqlMessage
+            }
+        });
+    }
+
+    async select(options) {
+        return this._repository.find(options);
     }
 
 }

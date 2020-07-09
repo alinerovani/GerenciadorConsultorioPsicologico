@@ -24,12 +24,6 @@ export default class User extends BaseEntity {
     telefone: bigint;
 
     @Column({ type: 'varchar', length: 100 })
-    state: string;
-
-    @Column({ type: 'varchar', length: 100 })
-    city: string;
-
-    @Column({ type: 'varchar', length: 100 })
     email: string;
 
     @Column({ type: 'varchar', length: 100})

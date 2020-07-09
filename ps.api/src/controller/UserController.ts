@@ -15,8 +15,6 @@ export class UserController extends BaseController<User>{
         super.isRequired(_user.email, 'Informe seu e-mail!');
         super.isRequired(_user.password, 'Informe sua senha!');
         super.isRequired(_user.telefone, 'Informe seu telefone!');
-        super.isRequired(_user.state, 'Informe seu estado!');
-        super.isRequired(_user.city, 'Informe sua cidade!');
         return super.save(_user);
     } 
 }
