@@ -25,7 +25,16 @@ const routes: Routes = [
   {
     path: 'reserva-consultorio',
     loadChildren: () => import('./reserva-consultorio/reserva-consultorio.module').then( m => m.ReservaConsultorioPageModule)
+  },
+  {
+    path: 'consultorio',
+    loadChildren: () => import('./consultorio/consultorio.module').then( m => m.ConsultorioPageModule)
+  },
+  {
+    path: 'clinica',
+    loadChildren: () => import('./clinica/clinica.module').then( m => m.ClinicaPageModule)
   }
+
 ];
 @NgModule({
   imports: [

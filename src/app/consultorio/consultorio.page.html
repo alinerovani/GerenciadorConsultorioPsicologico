@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar class="ion-text-center" color="primary">
+    <ion-title>Consultório</ion-title>   
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="body">
+    <ion-toolbar>
+      <ion-item>
+        <ion-label>Clínica</ion-label>
+        <ion-select value="clinica1" ok-text="Selecionar" cancel-text="Cancelar">
+          <ion-select-option value="clinica1">Clínica 1</ion-select-option>
+          <ion-select-option value="clinica2">Clínica 2</ion-select-option>
+          <ion-select-option value="clinica3">Clínica 3</ion-select-option>
+          <ion-select-option value="clinica4">Clínica 4</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Descrição</ion-label>
+        <ion-input required="true"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Detalhes</ion-label>
+        <ion-input required="true"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Categoria</ion-label>
+        <ion-select required="true" value="1" ok-text="Selecionar" cancel-text="Cancelar">
+          <ion-select-option value="1">Adulto</ion-select-option>
+          <ion-select-option value="2">Infantil</ion-select-option>
+          <ion-select-option value="3">Misto</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Valor da locação por hora</ion-label>
+        <ion-input required="true" type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Ativo</ion-label>
+        <ion-checkbox required="true" checked="true"></ion-checkbox>
+      </ion-item>
+    </ion-toolbar>
+
+    <ion-row>
+      <ion-col>
+        <ion-button class="btn" color="primary" expand="block">Gravar</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button class="btn" color="danger" expand="block" href="/tabs/tabCadastros">Cancelar</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

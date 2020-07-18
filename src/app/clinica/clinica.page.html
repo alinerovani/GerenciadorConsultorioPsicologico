@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar class="ion-text-center" color="primary">
+    <ion-title>Clínica</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="body">
+    <ion-toolbar>
+      <ion-item>
+        <ion-label position="floating">Descrição</ion-label>
+        <ion-input required="true"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Bairro</ion-label>
+        <ion-input required="true"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Endereço</ion-label>
+        <ion-input required="true"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Número</ion-label>
+        <ion-input required="true"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Complemento</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Cidade</ion-label>
+        <ion-select required="true" value="1" ok-text="Selecionar" cancel-text="Cancelar">
+          <ion-select-option value="1">Passo Fundo</ion-select-option>
+          <ion-select-option value="2">Erechim</ion-select-option>
+          <ion-select-option value="3">Santa Maria</ion-select-option>
+          <ion-select-option value="3">Porto Alegre</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Ativo</ion-label>
+        <ion-checkbox checked="true" required="true"></ion-checkbox>
+      </ion-item>
+    </ion-toolbar>
+
+    <ion-row>
+      <ion-col>
+        <ion-button class="btn" color="primary" expand="block">Gravar</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button class="btn" color="danger" expand="block" href="/tabs/tabCadastros">Cancelar</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>
