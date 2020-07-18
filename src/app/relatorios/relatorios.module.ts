@@ -1,3 +1,5 @@
+import { RelatorioCardComponentModule } from './../components/relatorio-card/relatorio-card.module';
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +15,8 @@ import { RelatoriosPage } from './relatorios.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    RelatoriosPageRoutingModule
+    RelatoriosPageRoutingModule,
+    RelatorioCardComponentModule
   ],
   declarations: [RelatoriosPage]
 })

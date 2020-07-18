@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastrosPage implements OnInit {
 
-  constructor() { }
+  visibleClinic: boolean;
+
+  constructor() {
+    this.visibleClinic = true;
+  }
 
   ngOnInit() {
+  }
+
+  clickTab() {
+    this.visibleClinic = !this.visibleClinic;
   }
 
 }

@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Cadastro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="body">
+    <ion-toolbar>
+
+      <ion-item>
+        <ion-label>Tipo</ion-label>
+        <ion-select  ok-text="Selecionar" cancel-text="Cancelar">
+          <ion-select-option value="1">Psicólogo</ion-select-option>
+          <ion-select-option value="2">Proprietário</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input required="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">CRP</ion-label>
+        <ion-input required="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Telefone</ion-label>
+        <ion-input required="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Estado</ion-label>
+        <ion-select required="true" value="1" ok-text="Selecionar" cancel-text="Cancelar">
+          <ion-select-option value="1">Rio Grande do Sul</ion-select-option>
+          <ion-select-option value="2">Santa Catarina</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Cidade</ion-label>
+        <ion-select required="true" value="1" ok-text="Selecionar" cancel-text="Cancelar">
+          <ion-select-option value="1">Passo Fundo</ion-select-option>
+          <ion-select-option value="2">Porto Alegre</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input required="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input required="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Confirmar a senha</ion-label>
+        <ion-input required="true"></ion-input>
+      </ion-item>
+      
+    </ion-toolbar>
+
+    <ion-row>
+      <ion-col>
+        <ion-button class="btn" color="primary" expand="block" href="">Cadastrar</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button class="btn" color="danger" expand="block" href="/login">Cancelar</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

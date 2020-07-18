@@ -33,6 +33,18 @@ const routes: Routes = [
   {
     path: 'clinica',
     loadChildren: () => import('./clinica/clinica.module').then( m => m.ClinicaPageModule)
+  },
+  {
+    path: 'aprovacao-reserva',
+    loadChildren: () => import('./aprovacao-reserva/aprovacao-reserva.module').then( m => m.AprovacaoReservaPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'cadastro',
+    loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
   }
 
 ];

@@ -1,3 +1,5 @@
+import { ListConsultoriosComponentModule } from './../components/list-consultorios/list-consultorios.module';
+import { ListClinicasComponentModule } from './../components/list-clinicas/list-clinicas.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,7 +17,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
     FormsModule,
     IonicModule,
     FontAwesomeModule,
-    CadastrosPageRoutingModule
+    CadastrosPageRoutingModule,
+    ListClinicasComponentModule,
+    ListConsultoriosComponentModule
   ],
   declarations: [CadastrosPage]
 })

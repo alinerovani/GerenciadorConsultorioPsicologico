@@ -17,7 +17,7 @@ export class AgendaPage implements OnInit {
   optionsRange: CalendarComponentOptions = {
     monthFormat: 'MM/YYYY',
     weekdays: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
-    weekStart: 0
+    weekStart: 0,
   };
 
   constructor() { }

@@ -24,14 +24,6 @@ const routes: Routes = [
         loadChildren: () => import('../perfil/perfil.module').then(m => m.PerfilPageModule)
       },
       {
-        path: 'tabConsultorio',
-        loadChildren: () => import('../consultorio/consultorio.module').then(m => m.ConsultorioPageModule)
-      },
-      {
-        path: 'tabClinica',
-        loadChildren: () => import('../clinica/clinica.module').then(m => m.ClinicaPageModule)
-      },
-      {
         path: '',
         redirectTo: '/tabs/tabAgenda',
         pathMatch: 'full'
