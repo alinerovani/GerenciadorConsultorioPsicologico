@@ -48,19 +48,22 @@ export class UserController extends BaseController<User>{
 
     async save(request: Request) {
         // Conceito de desestruturação
-        let { name, category, email, password, telefone } = <User>request.body;
+        let { name, category, email, password, telefone, crp } = <User>request.body;
         // Validação dos campos obrigatórios
         super.isRequired(name, 'Informe seu nome!');
         super.isRequired(category, 'Informe sua categoria!');
         super.isRequired(email, 'Informe seu e-mail!');
         super.isRequired(password, 'Informe sua senha!');
         super.isRequired(telefone, 'Informe seu telefone!');
+        if(category == 1)
+            super.isRequired(crp, 'Informe o CRP!')
         
         let _user = new User();
         _user.name = name;
         _user.category = category;
         _user.email = email;
         _user.telefone = telefone;
+        _user.crp = crp;
         if (password)
             _user.password = md5(password);
             
