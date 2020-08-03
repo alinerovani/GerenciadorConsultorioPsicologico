@@ -1,5 +1,7 @@
+import { LocalstorageService } from './../services/localstorage.service';
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { User } from '../models/user';
 
 @Component({
 	selector: 'app-tabs',
@@ -7,12 +9,19 @@ import { NavController } from '@ionic/angular';
 	styleUrls: ['tabs.page.scss']
 })
 export class TabsPage {
-  	constructor(
-		private navCtrl: NavController
-  	) { }
 
-  	ngOnInit(): void {
-    	if (!localStorage.getItem("PS:USER_INFO"))
-      		this.navCtrl.navigateRoot('/login');
-    }
+	user: User;
+
+	constructor(
+		private navCtrl: NavController,
+		private localStorage: LocalstorageService
+	) { }
+
+	ngOnInit(): void {
+		this.user = this.localStorage.getLocalUser();
+
+		if (this.user == null) {
+			this.navCtrl.navigateRoot('/login');
+		}
+	}
 }

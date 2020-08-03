@@ -1,3 +1,4 @@
+import { LocalstorageService } from './localstorage.service';
 import { AlertService } from './alert.service';
 import { environment } from './../../environments/environment';
 import { Injectable } from  '@angular/core';
@@ -12,7 +13,8 @@ export class ApiService {
   	constructor(
     	private router: Router,
     	private httpClient: HttpClient, 
-    	public alertService: AlertService,
+		public alertService: AlertService,
+		private localStorage: LocalstorageService
       ) { }
       
     login(user: User) {
@@ -23,7 +25,9 @@ export class ApiService {
 			
 				if (status == 200) {
 					//this.alertService.toast("Login efetuado com sucesso!");
-					localStorage.setItem("PS:USER_INFO", JSON.stringify(message["user"]));
+					let user = Object.assign(new User, JSON.parse(JSON.stringify(message["user"])));
+					this.localStorage.setLocalUser(user);
+					
 					localStorage.setItem("PS:USER_TOKEN", JSON.stringify(message[ "token"]));
 					
 					this.router.navigate(['/tabs']);
@@ -36,7 +40,7 @@ export class ApiService {
 	}
 
 	logout() {
-		localStorage.removeItem("PS:USER_INFO");
+		this.localStorage.removeLocalUser();
 		this.router.navigate(['/login']);
 	}
   

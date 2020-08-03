@@ -1,3 +1,4 @@
+import { LocalstorageService } from './../services/localstorage.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user';
 import { ApiService } from '../services/api.service';
@@ -11,10 +12,13 @@ export class PerfilPage implements OnInit {
 
   user: User;
 
-  constructor(private apiService: ApiService) { }
+  constructor(
+    private apiService: ApiService,
+    private localStorage: LocalstorageService
+    ) { }
 
   ngOnInit() {
-    this.user = Object.assign(new User, JSON.parse(localStorage.getItem("PS:USER_INFO")));
+    this.user = this.localStorage.getLocalUser();
   }
 
   logout() {
