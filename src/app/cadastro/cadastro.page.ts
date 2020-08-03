@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../models/user';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastroPage implements OnInit {
 
-  constructor() { }
+  userForm: User = new User();
+
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
+  }
+
+  cadastrar() {
+    this.apiService.cadastro(this.userForm);
   }
 
 }

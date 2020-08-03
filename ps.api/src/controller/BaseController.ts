@@ -30,8 +30,15 @@ export abstract class BaseController<GENERIC_CLASS> extends BaseValidation {
             // se encontrar o registro, usa o assign para mesclar os dados alterados
             if (_modelRegister) Object.assign(_modelRegister, model);
         }
+
         if (this.valid())
-            return this._repository.save(model).catch(error => {
+            return this._repository.save(model).then(obj => {
+                return {
+                    status: 200,
+                    data: obj
+                }
+            })
+            .catch(error => {
                 return {
                     status: 400,
                     error: error.sqlMessage
@@ -60,6 +67,10 @@ export abstract class BaseController<GENERIC_CLASS> extends BaseValidation {
 
     async select(options) {
         return this._repository.find(options);
+    }
+
+    get repository(): Repository<GENERIC_CLASS> {
+        return this._repository;
     }
 
 }

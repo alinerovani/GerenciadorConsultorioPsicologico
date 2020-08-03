@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-tabs',
-  templateUrl: 'tabs.page.html',
-  styleUrls: ['tabs.page.scss']
+	selector: 'app-tabs',
+	templateUrl: 'tabs.page.html',
+	styleUrls: ['tabs.page.scss']
 })
 export class TabsPage {
+  	constructor(
+		private navCtrl: NavController
+  	) { }
 
-  constructor() {}
-
+  	ngOnInit(): void {
+    	if (!localStorage.getItem("PS:USER_INFO"))
+      		this.navCtrl.navigateRoot('/login');
+    }
 }

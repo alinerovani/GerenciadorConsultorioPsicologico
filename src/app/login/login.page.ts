@@ -1,4 +1,8 @@
+
 import { Component, OnInit } from '@angular/core';
+import { User } from '../models/user';
+import { ApiService } from '../services/api.service';
+
 
 @Component({
   selector: 'app-login',
@@ -7,9 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  userForm: User = new User();
+
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
+  }
+
+  login() {
+    this.apiService.login(this.userForm);
   }
 
 }
