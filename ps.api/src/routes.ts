@@ -8,8 +8,8 @@ import { UserController } from "./controller/UserController";
 export const Routes = [
 
     //clinicas
-    { method: "get", route: "/clinics", controller: ClinicController, action: "all" }, 
-    { method: "get", route: "/clinics/:id", controller: ClinicController, action: "one" }, 
+    { method: "get", route: "/clinics", controller: ClinicController, action: "allClinic" }, 
+    { method: "get", route: "/clinics/:id", controller: ClinicController, action: "oneClinic" }, 
     { method: "post", route: "/clinics", controller: ClinicController, action: "save" }, 
     { method: "delete", route: "/clinics/:id", controller: ClinicController, action: "remove"},
 

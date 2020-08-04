@@ -1,16 +1,9 @@
-<ion-list >
-  <ion-item button >
+<ion-list *ngFor="let clinica of clinicas; let i = index">
+  <ion-item button (click)="openFormClinica(i)">
     <ion-icon slot="end" name="arrow-forward"></ion-icon>
     <ion-label>
-      <h3 class="text-bold">Clínica 1</h3>
-      <p>3 consultórios</p>
-    </ion-label>
-  </ion-item>
-  <ion-item button >
-    <ion-icon slot="end" name="arrow-forward"></ion-icon>
-    <ion-label>
-      <h3 class="text-bold">Clínica 2</h3>
-      <p>1 consultórios</p>
+      <h3 class="text-bold">{{clinica.name}}</h3>
+      <p>{{clinica.address}}, {{clinica.number}} - {{clinica.neighborhood}}</p>
     </ion-label>
   </ion-item>
 </ion-list>

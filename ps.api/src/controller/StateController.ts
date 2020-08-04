@@ -13,7 +13,7 @@ export class StateController extends BaseValidation {
     }
 
     async all() {
-        return this._repository.find();
+        return this._repository.find({ relations: ["cities"] });
     }
 
     async one(request: Request) {

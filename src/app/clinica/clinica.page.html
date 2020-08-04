@@ -2,7 +2,7 @@
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="tabs/tabCadastros"></ion-back-button>
-      <ion-title>Nova Clínica</ion-title>
+      <ion-title>Clínica</ion-title>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -11,43 +11,46 @@
   <div class="body">
     <ion-toolbar>
       <ion-item>
-        <ion-label position="floating">Descrição</ion-label>
-        <ion-input required="true"></ion-input>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input required="true" [(ngModel)]="clinicaForm.name"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Bairro</ion-label>
-        <ion-input required="true"></ion-input>
+        <ion-input required="true" [(ngModel)]="clinicaForm.neighborhood"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Endereço</ion-label>
-        <ion-input required="true"></ion-input>
+        <ion-input required="true" [(ngModel)]="clinicaForm.address"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Número</ion-label>
-        <ion-input required="true"></ion-input>
+        <ion-input required="true" [(ngModel)]="clinicaForm.number"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Complemento</ion-label>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="clinicaForm.compl"></ion-input>
       </ion-item>
       <ion-item>
+        <ion-label position="floating">Estado</ion-label>
+        <ion-select required="true" ok-text="Selecionar" cancel-text="Cancelar" (ionChange)="changeEstado()" [(ngModel)]="estadoSelecionado" >
+          <ion-select-option [value]="estado" *ngFor="let estado of estados">{{estado.name}} </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item *ngIf="cidades.length > 0" >
         <ion-label position="floating">Cidade</ion-label>
-        <ion-select required="true" value="1" ok-text="Selecionar" cancel-text="Cancelar">
-          <ion-select-option value="1">Passo Fundo</ion-select-option>
-          <ion-select-option value="2">Erechim</ion-select-option>
-          <ion-select-option value="3">Santa Maria</ion-select-option>
-          <ion-select-option value="3">Porto Alegre</ion-select-option>
+        <ion-select required="true" [(ngModel)]="clinicaForm.cityUid" ok-text="Selecionar" cancel-text="Cancelar">
+          <ion-select-option *ngFor="let cidade of cidades" [value]="cidade.uid">{{cidade.name}} </ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item>
         <ion-label>Ativo</ion-label>
-        <ion-checkbox checked="true" required="true"></ion-checkbox>
+        <ion-checkbox checked="true" [(ngModel)]="clinicaForm.isActive" required="true"></ion-checkbox>
       </ion-item>
     </ion-toolbar>
 
     <ion-row>
       <ion-col>
-        <ion-button class="btn" color="primary" expand="block">Gravar</ion-button>
+        <ion-button class="btn" color="primary" expand="block" (click)="salvarClinica()">Gravar</ion-button>
       </ion-col>
       <ion-col>
         <ion-button class="btn" color="danger" expand="block" href="/tabs/tabCadastros">Cancelar</ion-button>

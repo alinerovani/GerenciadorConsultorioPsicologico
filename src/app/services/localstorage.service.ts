@@ -11,7 +11,7 @@ export class LocalstorageService {
   getLocalUser() {
     if (localStorage.getItem("PS:USER_INFO") == null)
       return null;
-    
+
     return Object.assign(new User, JSON.parse(localStorage.getItem("PS:USER_INFO")));
   }
 
@@ -21,5 +21,13 @@ export class LocalstorageService {
 
   removeLocalUser() {
     localStorage.removeItem("PS:USER_INFO");
+    localStorage.removeItem("PS:USER_TOKEN");
+  }
+
+  getAuthToken() {
+    if (localStorage.getItem("PS:USER_TOKEN") == null)
+      return '';
+
+    return localStorage.getItem("PS:USER_TOKEN");
   }
 }

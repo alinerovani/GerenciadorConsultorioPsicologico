@@ -16,8 +16,12 @@ export class CadastrosPage implements OnInit {
   ngOnInit() {
   }
 
-  clickTab() {
-    this.visibleClinic = !this.visibleClinic;
+  clickTabClinica() {
+    this.visibleClinic = true;
+  }
+
+  clickTabConsultorio() {
+    this.visibleClinic = false;
   }
 
 }

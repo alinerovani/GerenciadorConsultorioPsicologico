@@ -10,11 +10,13 @@ import auth from './middleware/auth';
 
 // create express app
 const app = express();
+
+app.use(cors());
+app.options('*', cors())
+
 app.use(bodyParser.json());
 
 app.use(auth);
-
-app.use(cors());
 
 // register express routes from defined application routes
 Routes.forEach(route => {
