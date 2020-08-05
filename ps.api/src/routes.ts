@@ -7,11 +7,29 @@ import { UserController } from "./controller/UserController";
 
 export const Routes = [
 
+    /*
+    rota para cadastrar consultorio
+    rota para consultar consultorio
+    rota para remover consultorio
+
+    rota para consultar agendamentos
+    rota para cadastrar agendamento
+
+    rota para relatorio
+    */
+
     //clinicas
     { method: "get", route: "/clinics", controller: ClinicController, action: "allClinic" }, 
     { method: "get", route: "/clinics/:id", controller: ClinicController, action: "oneClinic" }, 
     { method: "post", route: "/clinics", controller: ClinicController, action: "save" }, 
     { method: "delete", route: "/clinics/:id", controller: ClinicController, action: "remove"},
+
+    //consultórios
+    { method: "get", route: "/clinicrooms", controller: ClinicRoomController, action: "allClinicRooms" }, 
+    { method: "post", route: "/clinicrooms", controller: ClinicRoomController, action: "save" }, 
+    { method: "delete", route: "/clinicrooms/:id", controller: ClinicRoomController, action: "remove"},
+    //todos os consultorios de uma clinica
+    { method: "get", route: "/clinics/:clinic/rooms", controller: ClinicRoomController, action: "getRooms" }, 
 
     //proprietarios e psicologos
     //{ method: "get", route: "/users", controller: UserController, action: "all" }, 
@@ -20,27 +38,15 @@ export const Routes = [
     { method: "delete", route: "/users/:id", controller: UserController, action: "remove"},
     { method: "post", route: "/auth", controller: UserController, action: "auth" }, 
 
-    //consultórios
-    { method: "post", route: "/clinicrooms", controller: ClinicRoomController, action: "save" }, 
-    { method: "delete", route: "/clinicrooms/:id", controller: ClinicRoomController, action: "remove"},
-
     //agendamentos
     { method: "post", route: "/schedules", controller: ScheduleController, action: "save" }, 
     { method: "delete", route: "/schedules/:id", controller: ScheduleController, action: "remove"},
+    { method: "get", route: "/schedules/user/:user", controller: ScheduleController, action: "getScheduleUser" }, 
+    { method: "get", route: "/schedules/clinicroom/:room", controller: ScheduleController, action: "getScheduleClinicRoom" }, 
 
     //estados
     { method: "get", route: "/states", controller: StateController, action: "all" }, 
     //cidades de um estado
     { method: "get", route: "/cities/:state", controller: CityController, action: "all" }, 
-
-
-    //todos os consultorios de uma clinica
-    { method: "get", route: "/clinics/:clinic/rooms", controller: ClinicRoomController, action: "getRooms" }, 
-    
-    //agendamento de um usuario
-    { method: "get", route: "/schedules/user/:user", controller: ScheduleController, action: "getScheduleUser" }, 
-
-    //agendamento de um consultorio
-    { method: "get", route: "/schedules/clinicroom/:room", controller: ScheduleController, action: "getScheduleClinicRoom" }, 
 
 ];

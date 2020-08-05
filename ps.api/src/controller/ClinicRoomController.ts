@@ -17,10 +17,23 @@ export class ClinicRoomController extends BaseController<ClinicRoom>{
         super.isRequired(_room.clinicUid, 'Informe a clinica!');
         return super.save(_room);
     }
-    
+
+    async allClinicRooms(request: Request) {
+        let user_uid = request.userAuth._payload.uid;
+
+        let repository = this.repository;
+
+        return repository.createQueryBuilder('clinic_room')
+        .innerJoinAndSelect('clinic_room.clinic', 'clinic')
+        .where('clinic.userUid = :userUid', { userUid: user_uid })
+        .getMany();
+    }
+
     async getRooms(request: Request) {
-        return super.select({
+        let repository = this.repository;
+        return repository.find({
             where: {
+                isActive: 1,
                 clinicUid: request.params.clinic
             }
         });

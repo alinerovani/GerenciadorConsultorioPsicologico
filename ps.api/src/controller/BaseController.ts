@@ -65,10 +65,6 @@ export abstract class BaseController<GENERIC_CLASS> extends BaseValidation {
         });
     }
 
-    async select(options) {
-        return this._repository.find(options);
-    }
-
     get repository(): Repository<GENERIC_CLASS> {
         return this._repository;
     }

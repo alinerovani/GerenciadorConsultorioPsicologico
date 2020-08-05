@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { NavigationExtras } from '@angular/router';
 import { Router } from '@angular/router';
+import { Clinic } from 'src/app/models/clinic';
 
 @Component({
   selector: 'app-list-clinicas',
@@ -10,9 +11,9 @@ import { Router } from '@angular/router';
 })
 export class ListClinicasComponent implements OnInit {
 
-  clinicas: any;
+  clinicas: Clinic[];
 
-  constructor(private apiService: ApiService, private router: Router,) {
+  constructor(private apiService: ApiService, private router: Router) {
     this.clinicas = [];
   }
 
@@ -21,7 +22,6 @@ export class ListClinicasComponent implements OnInit {
   }
 
   getClinicas() {
-    console.log("get clinicas");
     this.apiService.getClinicas()
       .subscribe(response => {
         this.clinicas = response;

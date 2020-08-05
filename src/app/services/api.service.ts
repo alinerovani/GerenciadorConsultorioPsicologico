@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { Clinic } from '../models/clinic';
 import { State } from '../models/state';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
@@ -98,7 +99,7 @@ export class ApiService {
 			});
 	}
 
-	getClinicas() {
+	getClinicas(): Observable<Clinic[]> {
 		let token = this.localStorage.getAuthToken();
 		const httpOptions = {
 			headers: new HttpHeaders({
@@ -107,10 +108,10 @@ export class ApiService {
 			})
 		};
 
-		return this.httpClient.get<Clinic>(`${environment.url_api}/clinics`, httpOptions);
+		return this.httpClient.get<Clinic[]>(`${environment.url_api}/clinics`, httpOptions);
 	}
 
-	getEstados() {
+	getEstados(): Observable<State[]> {
 		let token = this.localStorage.getAuthToken();
 		const httpOptions = {
 			headers: new HttpHeaders({
@@ -119,7 +120,7 @@ export class ApiService {
 			})
 		};
 
-		return this.httpClient.get<State>(`${environment.url_api}/states`, httpOptions);
+		return this.httpClient.get<State[]>(`${environment.url_api}/states`, httpOptions);
 	}
 }
 

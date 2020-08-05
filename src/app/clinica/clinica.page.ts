@@ -1,10 +1,9 @@
-import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Component, OnInit } from '@angular/core';
 import { Clinic } from '../models/clinic';
 import { ApiService } from '../services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import State from 'ps.api/src/entity/State';
 import { City } from '../models/city';
+import { State } from '../models/state';
 
 @Component({
   selector: 'app-clinica',
@@ -15,9 +14,9 @@ export class ClinicaPage implements OnInit {
 
   clinicaForm: Clinic = new Clinic();
 
-  estados: any;
+  estados: State[];
   estadoSelecionado: State;
-  cidades: any;
+  cidades: City[];
 
   constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) {
     this.estados = [];

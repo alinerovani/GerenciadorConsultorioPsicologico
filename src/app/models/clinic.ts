@@ -1,5 +1,3 @@
-import City from 'ps.api/src/entity/City';
-
 export class Clinic {
 
     uid: string;
