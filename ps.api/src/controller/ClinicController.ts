@@ -29,10 +29,8 @@ export class ClinicController extends BaseController<Clinic>{
         let repository = this.repository;
         return repository.find({
             where: { 
-                isActive: 1,
                 userUid: user_uid
-            },
-            relations: ["city"]
+            }
         });
     }
 

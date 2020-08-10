@@ -1,30 +1,11 @@
-<ion-list >
-  <ion-item button >
+<ion-list *ngFor="let consultorio of rooms; let i = index">
+  <ion-item button (click)="openFormConsultorio(i)">
     <ion-icon slot="end" name="arrow-forward"></ion-icon>
     <ion-label>
-      <h3 class="text-bold">Consultório A</h3>
-      <p>Clínica 1</p>
-    </ion-label>
-  </ion-item>
-  <ion-item button >
-    <ion-icon slot="end" name="arrow-forward"></ion-icon>
-    <ion-label>
-      <h3 class="text-bold">Consultório B3</h3>
-      <p>Clínica 1</p>
-    </ion-label>
-  </ion-item>
-  <ion-item button >
-    <ion-icon slot="end" name="arrow-forward"></ion-icon>
-    <ion-label>
-      <h3 class="text-bold">Consultório C</h3>
-      <p>Clínica 1</p>
-    </ion-label>
-  </ion-item>
-  <ion-item button >
-    <ion-icon slot="end" name="arrow-forward"></ion-icon>
-    <ion-label>
-      <h3 class="text-bold">Consultório Lilás</h3>
-      <p>Clínica 2</p>
+      <h3 class="text-bold">{{consultorio.name}}</h3>
+      <p>{{consultorio.clinic.name}}</p>
+      <p>Categoria: {{consultorio.category}}</p>
+      <p [ngClass]="{'green-text':consultorio.isActive == true, 'red-text':consultorio.isActive == false}">{{consultorio.isActive == true ? 'Ativo': 'Inativo'}}</p>
     </ion-label>
   </ion-item>
 </ion-list>

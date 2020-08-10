@@ -4,6 +4,7 @@
     <ion-label>
       <h3 class="text-bold">{{clinica.name}}</h3>
       <p>{{clinica.address}}, {{clinica.number}} - {{clinica.neighborhood}}</p>
+      <p [ngClass]="{'green-text':clinica.isActive == true, 'red-text':clinica.isActive == false}">{{clinica.isActive == true ? 'Ativo': 'Inativo'}}</p>
     </ion-label>
   </ion-item>
 </ion-list>

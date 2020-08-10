@@ -8,6 +8,7 @@ import { User } from '../models/user';
 import { Clinic } from '../models/clinic';
 import { State } from '../models/state';
 import { Observable } from 'rxjs';
+import { ClinicRoom } from '../models/clinicRoom';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
@@ -121,6 +122,49 @@ export class ApiService {
 		};
 
 		return this.httpClient.get<State[]>(`${environment.url_api}/states`, httpOptions);
+	}
+
+	getConsultorios(): Observable<ClinicRoom[]> {
+		let token = this.localStorage.getAuthToken();
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'x-token-access': token
+			})
+		};
+
+		return this.httpClient.get<ClinicRoom[]>(`${environment.url_api}/clinicrooms`, httpOptions);
+	}
+
+	novoConsultorio(consultorio: ClinicRoom) {
+		let token = this.localStorage.getAuthToken();
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'x-token-access': token
+			})
+		};
+
+		this.httpClient.post(`${environment.url_api}/clinicrooms`, consultorio, httpOptions)
+			.subscribe(data => {
+				let status = data['status'];
+
+				if (status == 200) {
+					this.router.navigate(['/tabs/tabCadastros']);
+				} else {
+					let erros = data['errors'];
+					let message = "";
+
+					for (let er of erros) {
+						if (message != "")
+							message = message + "<br>";
+						message = message + er["message"];
+					}
+					this.alertService.alert("Erro", message);
+				}
+			}, error => {
+				console.log(error);
+			});
 	}
 }
 

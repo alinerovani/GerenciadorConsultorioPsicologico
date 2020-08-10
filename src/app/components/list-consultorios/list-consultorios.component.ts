@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ClinicRoom } from 'src/app/models/clinicRoom';
+import { ApiService } from 'src/app/services/api.service';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-list-consultorios',
@@ -7,8 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListConsultoriosComponent implements OnInit {
 
-  constructor() { }
+  rooms: ClinicRoom[];
 
-  ngOnInit() {}
+  constructor(private apiService: ApiService, private router: Router) {
+    this.rooms = [];
+  }
+
+  ngOnInit() {
+    this.getRooms();
+  }
+
+  getRooms() {
+    this.apiService.getConsultorios()
+      .subscribe(response => {
+        this.rooms = response;
+      })
+  }
+
+  openFormConsultorio(index: number) {
+    let navigationExtras: NavigationExtras = { state: { clinic_room: this.rooms[index] } };
+    this.router.navigate(['/consultorio'], navigationExtras);
+  }
 
 }

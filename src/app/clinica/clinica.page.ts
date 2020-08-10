@@ -37,13 +37,18 @@ export class ClinicaPage implements OnInit {
     this.apiService.getEstados()
       .subscribe(response => {
         this.estados = response;
-        for (let index = 0; index < this.estados.length; index++) {
-          /*if(this.clinicaForm.uid != undefined && this.estados[index].uid == this.clinicaForm.city.stateUid) {
-            this.estadoSelecionado = this.estados[index];
-            this.cidades = this.estados[index].cities;
-          }*/
+        if (this.clinicaForm.cityUid != undefined) {
+          for (let index = 0; index < this.estados.length; index++) {
+            let cidadesAux = this.estados[index].cities;
+            for (let i = 0; i < cidadesAux.length; i++) {
+              if(cidadesAux[i].uid == this.clinicaForm.cityUid) {
+                this.estadoSelecionado = this.estados[index];
+                this.changeEstado();
+              }
+            }
+          }
         }
-      })
+      });
   }
 
   changeEstado() {

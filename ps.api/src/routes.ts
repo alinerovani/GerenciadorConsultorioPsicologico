@@ -18,11 +18,13 @@ export const Routes = [
     rota para relatorio
     */
 
-    //clinicas
+    //clinicas x proprietario
     { method: "get", route: "/clinics", controller: ClinicController, action: "allClinic" }, 
     { method: "get", route: "/clinics/:id", controller: ClinicController, action: "oneClinic" }, 
     { method: "post", route: "/clinics", controller: ClinicController, action: "save" }, 
     { method: "delete", route: "/clinics/:id", controller: ClinicController, action: "remove"},
+
+    //TODAS as clinicas ativas
 
     //consultórios
     { method: "get", route: "/clinicrooms", controller: ClinicRoomController, action: "allClinicRooms" }, 
