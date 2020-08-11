@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ClinicRoom } from 'src/app/models/clinicRoom';
+import { ClinicRoom, Category } from 'src/app/models/clinicRoom';
 import { ApiService } from 'src/app/services/api.service';
 import { Router, NavigationExtras } from '@angular/router';
 
@@ -18,6 +18,10 @@ export class ListConsultoriosComponent implements OnInit {
 
   ngOnInit() {
     this.getRooms();
+  }
+  
+  getCategoryRoom(room: ClinicRoom) {
+    return Category[room.category];
   }
 
   getRooms() {

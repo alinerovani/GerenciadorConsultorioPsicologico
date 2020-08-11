@@ -10,6 +10,9 @@ export class ClinicRoomController extends BaseController<ClinicRoom>{
 
     async save(request: Request) {
         let _room = <ClinicRoom>request.body;
+
+        delete _room.clinic;
+
         super.isRequired(_room.name, 'Informe o nome!');
         super.isRequired(_room.description, 'Informe a descrição!');
         super.isRequired(_room.category, 'Informe a categoria!');

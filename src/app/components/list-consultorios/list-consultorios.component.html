@@ -4,7 +4,7 @@
     <ion-label>
       <h3 class="text-bold">{{consultorio.name}}</h3>
       <p>{{consultorio.clinic.name}}</p>
-      <p>Categoria: {{consultorio.category}}</p>
+      <p>Categoria: {{getCategoryRoom(consultorio)}}</p>
       <p [ngClass]="{'green-text':consultorio.isActive == true, 'red-text':consultorio.isActive == false}">{{consultorio.isActive == true ? 'Ativo': 'Inativo'}}</p>
     </ion-label>
   </ion-item>

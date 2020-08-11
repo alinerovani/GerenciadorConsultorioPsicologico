@@ -1,5 +1,5 @@
 import { Clinic } from './clinic';
-enum Category {
+export enum Category {
     Infantil = 1,
     Adulto = 2,
     Misto = 3

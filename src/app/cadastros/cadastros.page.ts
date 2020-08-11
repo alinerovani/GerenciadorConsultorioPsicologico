@@ -1,3 +1,4 @@
+import { LocalstorageService } from './../services/localstorage.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,8 +10,8 @@ export class CadastrosPage implements OnInit {
 
   visibleClinic: boolean;
 
-  constructor() {
-    this.visibleClinic = true;
+  constructor(private localStorage: LocalstorageService) {
+    this.visibleClinic = localStorage.getVisibleClinic();
   }
 
   ngOnInit() {
@@ -18,10 +19,12 @@ export class CadastrosPage implements OnInit {
 
   clickTabClinica() {
     this.visibleClinic = true;
+    this.localStorage.setVisibleClinic(this.visibleClinic);
   }
 
   clickTabConsultorio() {
     this.visibleClinic = false;
+    this.localStorage.setVisibleClinic(this.visibleClinic);
   }
 
 }

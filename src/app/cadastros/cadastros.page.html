@@ -5,11 +5,11 @@
   <ion-toolbar class="tab-far-sub" color="light">
     <ion-tabs>
       <ion-tab-bar class="tab-bar" color="light" slot="top">
-        <ion-tab-button layout="icon-start" (click)="clickTabClinica()">
+        <ion-tab-button layout="icon-start" (click)="clickTabClinica()" [ngClass]="{'active':visibleClinic == true}">
           <ion-icon name="home"></ion-icon>
           <ion-label>Clínicas</ion-label>
         </ion-tab-button>
-        <ion-tab-button layout="icon-start" (click)="clickTabConsultorio()">
+        <ion-tab-button layout="icon-start" (click)="clickTabConsultorio()" [ngClass]="{'active':visibleClinic == false}">
             <fa-icon icon="couch" size="2x"></fa-icon>
           <ion-label>Consultórios</ion-label>
         </ion-tab-button>

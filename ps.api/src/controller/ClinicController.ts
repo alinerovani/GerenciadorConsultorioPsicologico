@@ -1,7 +1,6 @@
 import { Request } from 'express';
 import { BaseController } from "./BaseController";
 import Clinic from '../entity/Clinic';
-import { Like, getRepository } from 'typeorm';
 
 export class ClinicController extends BaseController<Clinic>{
 
@@ -14,6 +13,10 @@ export class ClinicController extends BaseController<Clinic>{
 
         let _clinic = <Clinic>request.body;
         _clinic.userUid = user_uid;
+
+        delete _clinic.user;
+        delete _clinic.city;
+
         super.isRequired(_clinic.name, 'Informe seu nome!');
         super.isRequired(_clinic.neighborhood, 'Informe seu bairro!');
         super.isRequired(_clinic.address, 'Informe seu endereço!');

@@ -1,7 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="tabs/tabCadastros"></ion-back-button>
       <ion-title>Novo Consultório</ion-title>
     </ion-buttons>
   </ion-toolbar>
@@ -16,7 +15,7 @@
       </ion-item>
       <ion-item>
         <ion-label>Clínica</ion-label>
-        <ion-select value="clinica1" ok-text="Selecionar" cancel-text="Cancelar" [(ngModel)]="consultorioForm.clinicUid">
+        <ion-select ok-text="Selecionar" cancel-text="Cancelar" [(ngModel)]="consultorioForm.clinicUid">
           <ion-select-option [value]="clinica.uid" *ngFor="let clinica of clinicas">{{clinica.name}} </ion-select-option>
         </ion-select>
       </ion-item>
@@ -26,10 +25,10 @@
       </ion-item>
       <ion-item>
         <ion-label position="floating">Categoria</ion-label>
-        <ion-select required="true" value="3" ok-text="Selecionar" cancel-text="Cancelar" [(ngModel)]="consultorioForm.category">
-          <ion-select-option value="2">Adulto</ion-select-option>
-          <ion-select-option value="1">Infantil</ion-select-option>
-          <ion-select-option value="3">Misto</ion-select-option>
+        <ion-select required="true" ok-text="Selecionar" cancel-text="Cancelar" [(ngModel)]="consultorioForm.category">
+          <ion-select-option [value]=2>Adulto</ion-select-option>
+          <ion-select-option [value]=1>Infantil</ion-select-option>
+          <ion-select-option [value]=3>Misto</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item>

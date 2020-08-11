@@ -27,7 +27,6 @@ export class ApiService {
 				let message = data['message'];
 
 				if (status == 200) {
-					//this.alertService.toast("Login efetuado com sucesso!");
 					let user = Object.assign(new User, JSON.parse(JSON.stringify(message["user"])));
 					this.localStorage.setLocalUser(user);
 					localStorage.setItem("PS:USER_TOKEN", message["token"]);
@@ -83,7 +82,9 @@ export class ApiService {
 				let status = data['status'];
 
 				if (status == 200) {
-					this.router.navigate(['/tabs/tabCadastros']);
+					this.router.navigate(['/tabs/tabCadastros']).then(nav => {
+						window.location.reload();
+					});
 				} else {
 					let erros = data['errors'];
 					let message = "";
@@ -150,7 +151,9 @@ export class ApiService {
 				let status = data['status'];
 
 				if (status == 200) {
-					this.router.navigate(['/tabs/tabCadastros']);
+					this.router.navigate(['/tabs/tabCadastros']).then(nav => {
+						window.location.reload();
+					});
 				} else {
 					let erros = data['errors'];
 					let message = "";

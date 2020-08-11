@@ -10,6 +10,10 @@ export class ScheduleController extends BaseController<Schedule>{
 
     async save(request: Request) {
         let _schedule = <Schedule>request.body;
+
+        delete _schedule.user;
+        delete _schedule.room;
+
         super.isRequired(_schedule.start_time, 'Informe a data e hora de início!');
         super.isRequired(_schedule.end_time, 'Informe a data e hora final!');
         super.isRequired(_schedule.status, 'Informe o status!');
@@ -20,7 +24,9 @@ export class ScheduleController extends BaseController<Schedule>{
     } 
 
     async getScheduleUser(request: Request) {
-        return super.select({
+        let repository = this.repository;
+
+        return repository.find({
             where: {
                 userUid: request.params.user
             }
@@ -28,10 +34,24 @@ export class ScheduleController extends BaseController<Schedule>{
     }
 
     async getScheduleClinicRoom(request: Request) {
-        return super.select({
+        let repository = this.repository;
+
+        return repository.find({
             where: {
                 roomUid: request.params.room
             }
         });
+    }
+
+    async allSchedulePending(request: Request) {
+        let user_uid = request.userAuth._payload.uid;
+
+        let repository = this.repository;
+        return repository.createQueryBuilder('schedule')
+        .innerJoinAndSelect("schedule.room", "room")
+        .innerJoinAndSelect("room.clinic", "clinic")
+        .innerJoinAndSelect("schedule.user", "user")
+        .where('schedule.status = :status AND clinic.userUid = :userUid', { status: 1, userUid: user_uid })
+        .getMany();
     }
 }
