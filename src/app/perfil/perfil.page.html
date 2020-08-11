@@ -16,7 +16,7 @@
   </ion-item>
 
   <ion-list class="menu_list_perfil">
-    <ion-item href="/aprovacao-reserva">
+    <ion-item href="/aprovacao-reserva" *ngIf = "user.category == 2">
       <ion-icon slot="end" name="notifications-outline"></ion-icon>
       <ion-label>Pedidos de locação</ion-label>
     </ion-item>
