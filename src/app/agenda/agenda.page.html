@@ -8,21 +8,14 @@
   <ion-list>
     <ion-item>
       <ion-label>Clínica</ion-label>
-      <ion-select value="clinica1" ok-text="Selecionar" cancel-text="Cancelar">
-        <ion-select-option value="clinica1">Clínica 1</ion-select-option>
-        <ion-select-option value="clinica2">Clínica 2</ion-select-option>
-        <ion-select-option value="clinica3">Clínica 3</ion-select-option>
-        <ion-select-option value="clinica4">Clínica 4</ion-select-option>
+      <ion-select ok-text="Selecionar" cancel-text="Cancelar">
+        <ion-select-option [value]="clinica.uid" *ngFor="let clinica of clinicas">{{clinica.name}} </ion-select-option>
       </ion-select>
     </ion-item>
-
     <ion-item>
       <ion-label>Consultório</ion-label>
-      <ion-select value="consultorio1" ok-text="Selecionar" cancel-text="Cancelar">
-        <ion-select-option value="consultorio1">Consultório 1</ion-select-option>
-        <ion-select-option value="consultorio2">Consultório 2</ion-select-option>
-        <ion-select-option value="consultorio3">Consultório 3</ion-select-option>
-        <ion-select-option value="consultorio4">Consultório 4</ion-select-option>
+      <ion-select ok-text="Selecionar" cancel-text="Cancelar">
+        <ion-select-option [value]="consultorio.uid" *ngFor="let consultorio of consultorios">{{consultorio.name}} </ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>
@@ -37,7 +30,7 @@
     <ion-calendar [(ngModel)]="dateRange"
         [options]="optionsRange"
         [type]="type"
-        [format]="'YYYY-MM-DD'">
+        [format]="DD-MM-YYYY">
     </ion-calendar>   
   </div>
   
