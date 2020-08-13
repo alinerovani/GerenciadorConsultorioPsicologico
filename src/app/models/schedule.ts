@@ -2,9 +2,9 @@ import { User } from './user';
 import { ClinicRoom } from './clinicRoom';
 
 export enum Status {
-    waiting = 1,
-    confirmed = 2,
-    canceled = 3
+    Aguardando = 1,
+    Confirmado = 2,
+    Cancelado = 3
   }  
 
 export class Schedule {

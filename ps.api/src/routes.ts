@@ -30,7 +30,7 @@ export const Routes = [
     { method: "get", route: "/clinics/:clinic/rooms", controller: ClinicRoomController, action: "getRooms" }, 
 
     //agendamentos
-    { method: "post", route: "/schedules", controller: ScheduleController, action: "save" }, 
+    { method: "post", route: "/schedule", controller: ScheduleController, action: "save" }, 
     { method: "delete", route: "/schedules/:id", controller: ScheduleController, action: "remove"},
     { method: "get", route: "/schedules/user/:user", controller: ScheduleController, action: "getScheduleUser" }, 
     { method: "get", route: "/schedules/clinicroom/:room", controller: ScheduleController, action: "getScheduleClinicRoom" },

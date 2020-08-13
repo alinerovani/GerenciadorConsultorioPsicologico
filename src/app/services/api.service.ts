@@ -9,6 +9,7 @@ import { Clinic } from '../models/clinic';
 import { State } from '../models/state';
 import { Observable } from 'rxjs';
 import { ClinicRoom } from '../models/clinicRoom';
+import { Schedule } from '../models/schedule';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
@@ -168,6 +169,44 @@ export class ApiService {
 			}, error => {
 				console.log(error);
 			});
+	}
+
+	getPendingSchedule(): Observable<Schedule[]> {
+		let token = this.localStorage.getAuthToken();
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'x-token-access': token
+			})
+		};
+
+		return this.httpClient.get<Schedule[]>(`${environment.url_api}/pendingschedules`, httpOptions);
+	}
+
+	getSchedulesUser(): Observable<Schedule[]> {
+		let token = this.localStorage.getAuthToken();
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'x-token-access': token
+			})
+		};
+
+		let user = this.localStorage.getLocalUser();
+
+		return this.httpClient.get<Schedule[]>(`${environment.url_api}/schedules/user/${user.uid}`, httpOptions);
+	}
+
+	salvaAgendamento(schedule: Schedule) {
+		let token = this.localStorage.getAuthToken();
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json',
+				'x-token-access': token
+			})
+		};
+
+		return this.httpClient.post(`${environment.url_api}/schedule`, schedule, httpOptions);
 	}
 }
 

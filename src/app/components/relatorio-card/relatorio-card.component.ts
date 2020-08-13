@@ -10,6 +10,7 @@ export class RelatorioCardComponent implements OnInit {
   @Input() name: string;
   @Input() description: string;
   @Input() icon: string;
+  @Input() path: string;
 
   constructor() { }
 

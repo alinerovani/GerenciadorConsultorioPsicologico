@@ -29,7 +29,8 @@ export class ScheduleController extends BaseController<Schedule>{
         return repository.find({
             where: {
                 userUid: request.params.user
-            }
+            },
+            relations: ["room", "room.clinic"]
         });
     }
 

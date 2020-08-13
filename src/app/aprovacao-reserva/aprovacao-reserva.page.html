@@ -8,6 +8,9 @@
 </ion-header>
 
 <ion-content>
-  <app-aprovacao-card psicologo="Bruna Balbinot" data="12/08/2020 13h00"></app-aprovacao-card>
-  <app-aprovacao-card psicologo="Alini Lopes" data="15/08/2020 15h30"></app-aprovacao-card>
+  <app-aprovacao-card 
+  *ngFor="let schedule_item of schedules; let i = index" 
+  [schedule]="schedule_item" 
+  (confirmScheduleEvent)="confirmSchedule($event)"
+  (cancelScheduleEvent)="cancelSchedule($event)"></app-aprovacao-card>
 </ion-content>

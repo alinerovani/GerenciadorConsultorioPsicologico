@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/tabRelatorios"></ion-back-button>
+      <ion-title>Meus agendamentos</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="schedules.length == 0">
+    <div class="alert alert-info" role="alert">
+      Você não tem agendamentos ainda! Fique a vontade para encontrar um consultório perto de você.
+    </div>
+  </div>
+  <div *ngIf="schedules.length > 0">
+    <ion-list>
+      <ion-item *ngFor="let schedule_item of schedules; let i = index">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>{{schedule_item.room.clinic.name}}</ion-card-subtitle>
+            <ion-item class="ion-no-padding">
+              <ion-card-title>{{schedule_item.room.name}}</ion-card-title>
+              <ion-badge slot="end" [ngClass]="{'orange':schedule_item.status == 1, 'green':schedule_item.status == 2, 'red':schedule_item.status == 3}">{{getStatus(schedule_item)}}</ion-badge>
+            </ion-item>
+          </ion-card-header>
+          <ion-card-content>
+            <p>{{formatDate(schedule_item.start_time)}} até {{formatDate(schedule_item.end_time)}}</p>
+            <p>Valor da sublocação: R${{schedule_item.rental_price}}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

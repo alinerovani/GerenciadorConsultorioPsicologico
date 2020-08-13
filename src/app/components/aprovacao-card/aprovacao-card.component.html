@@ -1,15 +1,18 @@
 <ion-card>
   <ion-item>
-    <ion-label>{{ psicologo }}</ion-label>
-    <ion-button color="success">
+    <ion-label>{{ schedule.user.name }} <br> CRP: {{schedule.user.crp}}</ion-label>
+    <ion-button color="success" (click)="callConfirm()">
       <ion-icon slot="icon-only" name="checkmark-circle"></ion-icon>
     </ion-button>
-    <ion-button color="danger">
+    <ion-button color="danger" (click)="callCancel()">
       <ion-icon slot="icon-only" name="close-circle"></ion-icon>
     </ion-button>
   </ion-item>
 
   <ion-card-content>
-    <p> {{data}}</p>
+    <p> <b>{{schedule.room.clinic.name}} - {{schedule.room.name}}</b> </p>
+    <h2><b>{{formatDate(schedule.start_time)}} até {{formatDate(schedule.end_time)}}</b></h2>
+    <br>
+    <h2>Telefone para contato: {{schedule.user.telefone}}</h2>
   </ion-card-content>
 </ion-card>
