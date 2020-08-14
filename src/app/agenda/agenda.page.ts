@@ -12,11 +12,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 
 export class AgendaPage implements OnInit {
-
+  clinicaSelecionada: Clinic;
   clinicas: Clinic[];
   consultorios: ClinicRoom[];
 
   constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) {
+    this.clinicas = [];
+    this.consultorios = [];
 
   }
 
@@ -47,4 +49,9 @@ export class AgendaPage implements OnInit {
     weekdays: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
     weekStart: 0,
   };
+
+  changeClinica(clinicaSelecionada) {
+    this.clinicaSelecionada = clinicaSelecionada;
+    this.consultorios = this.clinicaSelecionada.rooms;
+  }
 }

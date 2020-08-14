@@ -1,3 +1,5 @@
+import { ClinicRoom } from './clinicRoom';
+
 export class Clinic {
 
     uid: string;
@@ -8,4 +10,5 @@ export class Clinic {
     compl: string;
     isActive: boolean = true;
     cityUid: string;
+    rooms: ClinicRoom[];
 }

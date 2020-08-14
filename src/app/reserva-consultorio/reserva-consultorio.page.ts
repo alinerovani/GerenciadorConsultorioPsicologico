@@ -10,12 +10,13 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./reserva-consultorio.page.scss'],
 })
 export class ReservaConsultorioPage implements OnInit {
-
+  clinicaSelecionada: Clinic;
   clinicas: Clinic[];
   consultorios: ClinicRoom[];
 
   constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) {
-
+    this.clinicas = [];
+    this.consultorios = [];
   }
 
   ngOnInit() {
@@ -35,5 +36,10 @@ export class ReservaConsultorioPage implements OnInit {
       .subscribe(response => {
         this.consultorios = response;
       })
+  }
+
+  changeClinica(clinicaSelecionada) {
+    this.clinicaSelecionada = clinicaSelecionada;
+    this.consultorios = this.clinicaSelecionada.rooms;
   }
 }

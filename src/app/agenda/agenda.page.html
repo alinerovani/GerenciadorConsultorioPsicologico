@@ -8,8 +8,8 @@
   <ion-list>
     <ion-item>
       <ion-label>Clínica</ion-label>
-      <ion-select ok-text="Selecionar" cancel-text="Cancelar">
-        <ion-select-option [value]="clinica.uid" *ngFor="let clinica of clinicas">{{clinica.name}} </ion-select-option>
+      <ion-select ok-text="Selecionar" cancel-text="Cancelar" [(ngModel)]="clinicaSelecionada" (ionChange)="changeClinica(clinicaSelecionada)">
+        <ion-select-option [value]="clinica" *ngFor="let clinica of clinicas">{{clinica.name}} </ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>

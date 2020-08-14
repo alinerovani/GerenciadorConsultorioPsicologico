@@ -33,7 +33,8 @@ export class ClinicController extends BaseController<Clinic>{
         return repository.find({
             where: { 
                 userUid: user_uid
-            }
+            },
+            relations: ["rooms"]
         });
     }
 
