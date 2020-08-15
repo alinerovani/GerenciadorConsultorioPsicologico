@@ -1,7 +1,6 @@
 import { LocalstorageService } from './../services/localstorage.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user';
-import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-perfil',
@@ -13,7 +12,6 @@ export class PerfilPage implements OnInit {
   user: User;
 
   constructor(
-    private apiService: ApiService,
     private localStorage: LocalstorageService
     ) { }
 
@@ -22,7 +20,7 @@ export class PerfilPage implements OnInit {
   }
 
   logout() {
-    this.apiService.logout();
+    localStorage.clear();
   }
 
 }

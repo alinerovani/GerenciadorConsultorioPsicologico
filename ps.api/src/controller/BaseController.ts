@@ -13,7 +13,7 @@ export abstract class BaseController<GENERIC_CLASS> extends BaseValidation {
 
     async all() {
         return this._repository.find({
-            where: { 
+            where: {
                 isActive: true
             }
         });
@@ -38,12 +38,12 @@ export abstract class BaseController<GENERIC_CLASS> extends BaseValidation {
                     data: obj
                 }
             })
-            .catch(error => {
-                return {
-                    status: 400,
-                    error: error.sqlMessage
-                }
-            });
+                .catch(error => {
+                    return {
+                        status: 400,
+                        error: error.sqlMessage
+                    }
+                });
         else
             return {
                 status: 400,

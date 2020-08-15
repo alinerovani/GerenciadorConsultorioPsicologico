@@ -19,7 +19,6 @@ export class TabsPage {
 
 	ngOnInit(): void {
 		this.user = this.localStorage.getLocalUser();
-
 		if (this.user == null) {
 			this.navCtrl.navigateRoot('/login');
 		}

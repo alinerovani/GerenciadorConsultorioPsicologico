@@ -20,19 +20,14 @@ export class LocalstorageService {
   }
 
   getVisibleClinic() {
-    if(localStorage.getItem("visibleClinic") == null)
+    if (localStorage.getItem("visibleClinic") == null)
       return true; //padrao
-    
+
     return Boolean(JSON.parse(localStorage.getItem("visibleClinic")));
   }
 
   setVisibleClinic(visibleClinic: boolean) {
     localStorage.setItem("visibleClinic", String(visibleClinic));
-  }
-
-  removeLocalUser() {
-    localStorage.removeItem("PS:USER_INFO");
-    localStorage.removeItem("PS:USER_TOKEN");
   }
 
   getAuthToken() {

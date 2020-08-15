@@ -28,11 +28,7 @@ export class ApiService {
 				let message = data['message'];
 
 				if (status == 200) {
-					let user = Object.assign(new User, JSON.parse(JSON.stringify(message["user"])));
-					this.localStorage.setLocalUser(user);
-					localStorage.setItem("PS:USER_TOKEN", message["token"]);
-
-					this.router.navigate(['/tabs']);
+					this.salvaLogin(message);
 				}
 				else
 					this.alertService.alert("Não foi possível fazer login", "Dados incorretos!");
@@ -41,9 +37,36 @@ export class ApiService {
 			});
 	}
 
-	logout() {
-		this.localStorage.removeLocalUser();
-		this.router.navigate(['/login']);
+	salvaLogin(message) {
+		let user = Object.assign(new User, JSON.parse(JSON.stringify(message["user"])));
+		this.localStorage.setLocalUser(user);
+		localStorage.setItem("PS:USER_TOKEN", message["token"]);
+
+		this.router.navigate(['/tabs']);
+	}
+
+	atualizaUser(user: User) {
+		this.httpClient.post(`${environment.url_api}/users/update`, user)
+			.subscribe(data => {
+				let status = data['status'];
+				let message = data['message'];
+
+				if (status == 200) {
+					this.salvaLogin(message);
+				} else {
+					let erros = data['errors'];
+					let message = "";
+
+					for (let er of erros) {
+						if (message != "")
+							message = message + "<br>";
+						message = message + er["message"];
+					}
+					this.alertService.alert("Erro", message);
+				}
+			}, error => {
+				console.log(error);
+			});
 	}
 
 	cadastro(user: User) {
