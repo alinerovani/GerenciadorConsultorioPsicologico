@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalstorageService {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private navCtrl: NavController) { }
 
   getLocalUser() {
     if (localStorage.getItem("PS:USER_INFO") == null)
@@ -37,7 +38,7 @@ export class LocalstorageService {
 
   clearLocalStorage() {
     localStorage.clear();
-    this.router.navigate(['/login']);
+    this.navCtrl.navigateRoot('/login');
   }
 
   getAuthToken() {
