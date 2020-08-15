@@ -40,7 +40,7 @@ export class ApiService {
 	salvaLogin(message) {
 		let user = Object.assign(new User, JSON.parse(JSON.stringify(message["user"])));
 		this.localStorage.setLocalUser(user);
-		localStorage.setItem("PS:USER_TOKEN", message["token"]);
+		this.localStorage.setTokenAuth(message["token"]);
 
 		this.router.navigate(['/tabs']);
 	}

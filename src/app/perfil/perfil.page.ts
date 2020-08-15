@@ -20,7 +20,7 @@ export class PerfilPage implements OnInit {
   }
 
   logout() {
-    localStorage.clear();
+    this.localStorage.clearLocalStorage();
   }
 
 }

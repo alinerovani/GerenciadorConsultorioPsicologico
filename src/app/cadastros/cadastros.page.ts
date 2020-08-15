@@ -11,7 +11,7 @@ export class CadastrosPage implements OnInit {
   visibleClinic: boolean;
 
   constructor(private localStorage: LocalstorageService) {
-    this.visibleClinic = localStorage.getVisibleClinic();
+    this.visibleClinic = this.localStorage.getVisibleClinic();
   }
 
   ngOnInit() {

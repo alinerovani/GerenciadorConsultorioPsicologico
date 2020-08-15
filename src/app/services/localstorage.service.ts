@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalstorageService {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   getLocalUser() {
     if (localStorage.getItem("PS:USER_INFO") == null)
@@ -17,6 +18,10 @@ export class LocalstorageService {
 
   setLocalUser(user: User) {
     localStorage.setItem("PS:USER_INFO", JSON.stringify(user));
+  }
+
+  setTokenAuth(token: string) {
+    localStorage.setItem("PS:USER_TOKEN", token);
   }
 
   getVisibleClinic() {
@@ -30,9 +35,14 @@ export class LocalstorageService {
     localStorage.setItem("visibleClinic", String(visibleClinic));
   }
 
+  clearLocalStorage() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
+
   getAuthToken() {
     if (localStorage.getItem("PS:USER_TOKEN") == null)
-      return '';
+      return null;
 
     return localStorage.getItem("PS:USER_TOKEN");
   }
